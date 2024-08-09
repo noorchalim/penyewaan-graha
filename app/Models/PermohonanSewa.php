@@ -41,21 +41,15 @@ class PermohonanSewa extends Model
     {
         return $this->belongsTo(User::class);
     }
-    // public function perlengkapans()
-    // {
-    //     return $this->belongsToMany(Perlengkapan::class, 'permohonan_sewa_perlengkapan')
-    //         ->withPivot('quantity')
-    //         ->withTimestamps();
-    // }
 
     public function perlengkapan()
     {
         return $this->belongsToMany(Perlengkapan::class, 'permohonan_sewa_perlengkapan')
             ->withPivot('quantity');
     }
-    // public function perlengkapans()
-    // {
-    //     return $this->belongsToMany(Perlengkapan::class, 'permohonan_sewa_perlengkapan', 'permohonan_sewa_id', 'perlengkapan_id')
-    //         ->withPivot('quantity'); // Jika ada kolom tambahan di tabel pivot
-    // }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

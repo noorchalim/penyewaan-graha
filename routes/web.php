@@ -1,16 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PenyewaGedungController;
-use App\Http\Controllers\JadwalGedungController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PermohonanSewaController;
 use App\Http\Controllers\PerlengkapanController;
-use App\Http\Controllers\MidtransController;
-use App\Http\Controllers\SnapController;
+use App\Http\Controllers\PermohonanSewaController;
 
 // use App\Http\Controllers\JadwalGedungController;
 
@@ -32,6 +29,8 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login'); // Show login form
 Route::post('/login', [LoginController::class, 'login'])->name('login.post'); // Process login
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); // Process logout
+// Route::resource('admin.users', UserController::class);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard'); // Admin dashboard
@@ -56,13 +55,22 @@ Route::middleware('auth')->group(function () {
         'update' => 'admin.perlengkapan.update',
         'destroy' => 'admin.perlengkapan.destroy',
     ]);
+    Route::resource('admin/users', UserController::class)->names([
+        'index' => 'admin.users.index',
+        'create' => 'admin.users.create',
+        'store' => 'admin.users.store',
+        'show' => 'admin.users.show',
+        'edit' => 'admin.users.edit',
+        'update' => 'admin.users.update',
+        'destroy' => 'admin.users.destroy',
+    ]);
 });
 
 
 Route::get('/admin/permohonan-sewas', [PermohonanSewaController::class, 'getAdminPermohonanSewa'])->name('admin.permohonansewa.getAdminPermohonanSewa'); // Process login
 Route::get('/admin/permohonan-sewas/edit/{id}', [PermohonanSewaController::class, 'editAdminPermohonanSewa'])->name('admin.permohonansewa.editAdminPermohonanSewa'); // Process login
 Route::put('/admin/permohonan-sewas/{id}', [PermohonanSewaController::class, 'updateAdminPermohonanSewa'])->name('admin.permohonansewa.updateAdminPermohonanSewa');
-Route::post('/api/snap/token', [SnapController::class, 'getToken']);
+
 
 
 // Route::get('/admin/permohonan-sewas', [PermohonanSewaController::class, 'editAdminPermohonanSewa'])->name('admin.permohonansewa.getpermohonans'); // Process login

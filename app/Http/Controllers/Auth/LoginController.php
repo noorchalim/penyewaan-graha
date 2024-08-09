@@ -38,24 +38,6 @@ class LoginController extends Controller
         return redirect()->back()->withInput()->withErrors(['msg' => 'Invalid credentials']);
     }
 
-    // public function login(Request $request)
-    // {
-    //     $user = User::where('username', $request->username)->first();
-
-    //     if (!$user || !Hash::check($request->password, $user->password)) {
-    //         return response()->json(['message' => 'Invalid credentials'], 401);
-    //     }
-
-    //     $token = $user->createToken('auth_token')->plainTextToken;
-
-    //     return response()->json([
-    //         'token' => $token,
-    //         'role' => $user->role,
-    //         'user_id' => $user->id,
-    //     ], 200);
-    // }
-
-
     // Proses logout
     public function logout(Request $request)
     {
