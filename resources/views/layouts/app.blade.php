@@ -27,24 +27,24 @@
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{ asset('http://192.168.255.77:8000/assets/vendor/fonts/boxicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('http://192.168.7.77:8000/assets/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('http://192.168.255.77:8000/assets/vendor/css/core.css') }}" />
-    <link rel="stylesheet" href="{{ asset('http://192.168.255.77:8000/assets/vendor/css/theme-default.css') }}" />
-    <link rel="stylesheet" href="{{ asset('http://192.168.255.77:8000/assets/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('http://192.168.7.77:8000/assets/vendor/css/core.css') }}" />
+    <link rel="stylesheet" href="{{ asset('http://192.168.7.77:8000/assets/vendor/css/theme-default.css') }}" />
+    <link rel="stylesheet" href="{{ asset('http://192.168.7.77:8000/assets/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('http://192.168.255.77:8000/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('http://192.168.255.77:8000/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('http://192.168.7.77:8000/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('http://192.168.7.77:8000/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{ asset('http://192.168.255.77:8000/assets/vendor/js/helpers.js') }}"></script>
+    <script src="{{ asset('192/assets/vendohttp://r/j.168.7.77:8000s/helpers.js') }}"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('http://192.168.255.77:8000//assets/js/config.js') }}"></script>
+    <script src="{{ asset('192/assets/js/cohttp://nfi.168.7.77:8000g.js') }}"></script>
   </head>
 
   <body>
@@ -132,6 +132,12 @@
               <a href="{{ route('admin.permohonansewa.getAdminPermohonanSewa') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Permohonan Sewa</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('admin.transactions.getAdminTransactions') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Dashboards">Transaksi</div>
               </a>
             </li>
             <li class="menu-item">
@@ -254,13 +260,13 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{ asset('http://192.168.255.77:8000/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="{{ asset('192/assets/vendohttp://r/l.168.7.77:8000ibs/apex-charts/apexcharts.js') }}"></script>
 
     <!-- Main JS -->
-    <script src="{{ asset('http://192.168.255.77:8000/assets/js/main.js') }}"></script>
+    <script src="{{ asset('192/assets/js/mahttp://in..168.7.77:8000js') }}"></script>
 
     <!-- Page JS -->
-    <script src="{{ asset('http://192.168.255.77:8000/assets/js/dashboards-analytics.js') }}"></script>
+    <script src="{{ asset('192/assets/js/dahttp://shb.168.7.77:8000oards-analytics.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

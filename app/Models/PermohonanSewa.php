@@ -18,8 +18,14 @@ class PermohonanSewa extends Model
         'keperluan',
         'kategori_id',
         'vendor_id',
-        'perlengkapan_id',
+        'tanggal',
+        // 'tanggal_selesai',
+        // 'perlengkapan_id',
         'status',
+    ];
+
+    protected $casts = [
+        'tanggal' => 'array', // Cast tanggal as an array
     ];
 
     public function kategori()
@@ -51,5 +57,9 @@ class PermohonanSewa extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+    public function tanggalSewas()
+    {
+        return $this->hasMany(TanggalSewa::class);
     }
 }

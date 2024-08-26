@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kategoris', function (Blueprint $table) {
+        Schema::create('tanggal_sewas', function (Blueprint $table) {
             $table->id();
-            $table->string('paket');
-            $table->string('deskripsi');
-            $table->decimal('harga', 10, 2);
-            $table->string('jam'); // Format waktu, e.g., '08:00-14:00' or '17:00-22:00'
+            $table->foreignId('permohonan_sewa_id')->constrained('permohonan_sewas')->onDelete('cascade');
+            $table->json('tanggal');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategoris');
+        Schema::dropIfExists('tanggal_sewa');
     }
 };

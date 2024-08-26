@@ -19,8 +19,8 @@
                                     <th scope="col">Paket</th>
                                     <th scope="col">Deskripsi</th>
                                     <th scope="col">Harga</th>
-                                    <th scope="col">jam_mulai</th>
-                                    <th scope="col">jam_selesai</th>
+                                    <th scope="col">Jam</th>
+                                    {{-- <th scope="col">jam_selesai</th> --}}
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -31,8 +31,8 @@
                                         <td>{{ $kategori->paket }}</td>
                                         <td>{{ $kategori->deskripsi }}</td>
                                         <td>{{ $kategori->harga }}</td>
-                                        <td>{{ $kategori->jam_mulai }}</td>
-                                        <td>{{ $kategori->jam_selesai }}</td>
+                                        <td>{{ $kategori->jam }}</td>
+                                        {{-- <td>{{ $kategori->jam_selesai }}</td> --}}
                                         <td>
                                             <a href="{{ route('admin.kategori.edit', $kategori->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                             <form action="{{ route('admin.kategori.destroy', $kategori->id) }}" method="POST" class="d-inline">

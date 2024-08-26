@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PerlengkapanController;
 use App\Http\Controllers\PermohonanSewaController;
+use App\Http\Controllers\TransactionController;
 
 // use App\Http\Controllers\JadwalGedungController;
 
@@ -64,12 +65,25 @@ Route::middleware('auth')->group(function () {
         'update' => 'admin.users.update',
         'destroy' => 'admin.users.destroy',
     ]);
+    // Route::resource('admin/transactions', TransactionController::class)->names([
+    // 'index' => 'admin.transactions.getAdminTransactions',
+    // 'create' => 'admin.users.create',
+    // 'store' => 'admin.users.store',
+    // 'show' => 'admin.users.show',
+    // 'edit' => 'admin.users.edit',
+    // 'update' => 'admin.users.update',
+    // 'destroy' => 'admin.users.destroy',
+    // ]);
 });
+
+// routes/web.php
+Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transactions.show');
 
 
 Route::get('/admin/permohonan-sewas', [PermohonanSewaController::class, 'getAdminPermohonanSewa'])->name('admin.permohonansewa.getAdminPermohonanSewa'); // Process login
 Route::get('/admin/permohonan-sewas/edit/{id}', [PermohonanSewaController::class, 'editAdminPermohonanSewa'])->name('admin.permohonansewa.editAdminPermohonanSewa'); // Process login
 Route::put('/admin/permohonan-sewas/{id}', [PermohonanSewaController::class, 'updateAdminPermohonanSewa'])->name('admin.permohonansewa.updateAdminPermohonanSewa');
+Route::get('/admin/transactions/', [TransactionController::class, 'getAdminTransactions'])->name('admin.transactions.getAdminTransactions');
 
 
 

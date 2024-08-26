@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 
 
 use App\Models\PermohonanSewa;
@@ -122,6 +124,8 @@ class PermohonanSewaController extends Controller
             'vendor_id' => 'nullable|integer',
             'user_id' => 'required|integer',
             'status' => 'required|string',
+            'tanggal' => 'array',
+            'tanggal.*' => 'date_format:Y-m-d',
             'perlengkapan' => 'array',
             'perlengkapan.*.perlengkapan_id' => 'required|integer',
             'perlengkapan.*.quantity' => 'required|integer|min:1',
@@ -139,6 +143,7 @@ class PermohonanSewaController extends Controller
                 'vendor_id' => $validated['vendor_id'],
                 'user_id' => $validated['user_id'],
                 'status' => $validated['status'],
+                'tanggal' => $validated['tanggal'],
             ]);
 
             foreach ($validated['perlengkapan'] as $perlengkapan) {
@@ -153,18 +158,22 @@ class PermohonanSewaController extends Controller
             return response()->json($permohonan, 201);
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
+            Log::error('Database Query Exception: ' . $e->getMessage());
             return response()->json([
                 'message' => 'Database error',
                 'error' => $e->getMessage()
             ], 500);
         } catch (\Exception $e) {
             DB::rollBack();
+            Log::error('Exception: ' . $e->getMessage());
             return response()->json([
                 'message' => 'Unexpected error',
                 'error' => $e->getMessage()
             ], 500);
         }
     }
+
+
 
 
 

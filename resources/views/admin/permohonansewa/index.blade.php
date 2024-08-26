@@ -1,5 +1,3 @@
-<!-- resources/views/kategori/index.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
@@ -15,12 +13,14 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">username</th>
+                                    <th scope="col">Username</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">No HP</th>
                                     <th scope="col">Keperluan</th>
                                     <th scope="col">Paket</th>
                                     <th scope="col">Vendor</th>
+                                    <th scope="col">Tanggal</th>
+                                    {{-- <th scope="col">Tanggal Selesai</th> --}}
                                     <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
@@ -28,8 +28,7 @@
                             <tbody>
                                 @foreach ($permohonans as $permohonan)
                                     <tr>
-
-                                        <th scope="row">{{ $permohonan->user->username  }}</th>
+                                        <th scope="row">{{ $permohonan->user->username }}</th>
                                         <td>{{ $permohonan->nama }}</td>
                                         {{-- <td>{{ $permohonan->pekerjaan }}</td> --}}
                                         <td>{{ $permohonan->no_hp }}</td>
@@ -38,6 +37,17 @@
                                         <td>{{ $permohonan->keperluan }}</td>
                                         <td>{{ $permohonan->kategori->paket }}</td>
                                         <td>{{ $permohonan->vendor ? $permohonan->vendor->nama_perusahaan : 'N/A' }}</td>
+                                        <td>
+                                            @if (is_array($permohonan->tanggal))
+                                                {{ implode(', ', array_map(function($date) {
+                                                    return \Carbon\Carbon::parse($date)->format('d-m-Y');
+                                                }, $permohonan->tanggal)) }}
+                                            @else
+                                                {{ \Carbon\Carbon::parse($permohonan->tanggal)->format('d-m-Y') }}
+                                            @endif
+                                        </td>
+                                        
+                                        {{-- <td>{{ $permohonan->tanggal_selesai->format('d-m-Y') }}</td> --}}
                                         <td>{{ $permohonan->status }}</td>
                                         <td>
                                              <a href="{{ route('admin.permohonansewa.editAdminPermohonanSewa', $permohonan->id) }}" class="btn btn-sm btn-primary">Edit</a>

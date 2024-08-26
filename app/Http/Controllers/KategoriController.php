@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreKategoriRequest;
+
 
 class KategoriController extends Controller
 {
@@ -23,20 +25,32 @@ class KategoriController extends Controller
         return view('admin.kategori.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreKategoriRequest $request)
     {
-        $request->validate([
-            'paket' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'harga' => 'required|numeric',
-            'jam_mulai' => 'required|date_format:H:i',
-            'jam_selesai' => 'required|date_format:H:i',
-        ]);
+        $kategori = new Kategori();
+        $kategori->paket = $request->input('paket');
+        $kategori->deskripsi = $request->input('deskripsi');
+        $kategori->harga = $request->input('harga');
+        $kategori->jam = $request->input('jam'); // Format waktu, e.g., '08:00-14:00'
+        $kategori->save();
 
-        Kategori::create($request->all());
-
-        return redirect()->route('admin.kategori.index')->with('success', 'Kategori created successfully.');
+        return redirect()->route('admin.kategori.index')->with('success', 'Kategori berhasil ditambahkan.');
     }
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'paket' => 'required|string|max:255',
+    //         'deskripsi' => 'required|string',
+    //         'harga' => 'required|numeric',
+    //         'jam' => 'required|date_format:H:i',
+    //         // 'jam_selesai' => 'required|date_format:H:i',
+    //     ]);
+
+    //     Kategori::create($request->all());
+
+    //     return redirect()->route('admin.kategori.index')->with('success', 'Kategori created successfully.');
+    // }
 
     public function show($id)
     {

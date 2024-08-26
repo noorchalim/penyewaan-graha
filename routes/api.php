@@ -8,6 +8,7 @@ use App\Http\Controllers\PermohonanSewaController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PerlengkapanController;
+use App\Http\Controllers\MidtransController;
 
 use App\Http\Controllers\TransactionController;
 
@@ -49,3 +50,5 @@ Route::apiResource('permohonan-sewas', PermohonanSewaController::class);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/midtrans/webhook', [MidtransController::class, 'handleWebhook']);
+// Route::post('/midtrans/webhook', [TransactionController::class, 'handleWebhook']);

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('permohonan_sewas', function (Blueprint $table) {
             $table->id();
             // Identitas diri
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Relasi dengan tabel users
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('nama');
             $table->string('pekerjaan');
             $table->string('no_hp', 20);
@@ -27,11 +27,12 @@ return new class extends Migration
             $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade');
             // Vendor
             $table->foreignId('vendor_id')->nullable()->constrained('vendors')->onDelete('cascade');
-            // $table->foreignId('perlengkapan_id')->nullable()->constrained('perlengkapans')->onDelete('set null');
-
+            // Tanggal
+            $table->json('tanggal');
             // Status
             $table->enum('status', ['ditinjau', 'disetujui', 'ditolak'])->default('ditinjau');
-            $table->timestamps();
+            // Waktu pembuatan dan pembaruan otomatis
+            $table->timestamps(); // Ini akan menambahkan kolom created_at dan updated_at
         });
     }
 
